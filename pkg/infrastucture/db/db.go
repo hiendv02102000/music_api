@@ -1,7 +1,8 @@
 package db
 
 import (
-	"github.com/jinzhu/gorm"
+	"gorm.io/driver/sqlite"
+	"gorm.io/gorm"
 
 	// import source file
 	_ "github.com/golang-migrate/migrate/v4/source/file"
@@ -15,8 +16,9 @@ type Database struct {
 }
 
 func NewDB() (Database, error) {
-	dsn := "root:123456@tcp(127.0.0.1:3307)/food?charset=utf8mb4&parseTime=True&loc=Local"
-	db, err := gorm.Open("mysql", dsn)
+	// dsn := "root:123456@tcp(127.0.0.1:3307)/food?charset=utf8mb4&parseTime=True&loc=Local"
+	// db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open("food.db"), &gorm.Config{})
 	return Database{
 		DB: db,
 	}, err
@@ -26,16 +28,17 @@ func (db *Database) MigrateDBWithGorm() {
 }
 func (db *Database) First(condition interface{}, value interface{}) error {
 	err := db.DB.First(value, condition).Error
-	if gorm.IsRecordNotFoundError(err) {
-		return nil
-	}
+	// if gorm.IsRecordNotFoundError(err) {
+	// 	return nil
+	// }
+
 	return err
 }
 func (db *Database) Find(condition interface{}, value interface{}) error {
 	err := db.DB.Find(value, condition).Error
-	if gorm.IsRecordNotFoundError(err) {
-		return nil
-	}
+	// if gorm.IsRecordNotFoundError(err) {
+	// 	return nil
+	// }
 	return err
 }
 func (db *Database) Create(value interface{}) error {

@@ -6,8 +6,6 @@ import (
 	"github.com/graphql-go/graphql"
 )
 
-func InitOutputType() map[string]*graphql.Object {
-	return map[string]*graphql.Object{
-		"LoginOutput": output.LoginOutput(),
-	}
+var OutputTypes = map[string]*graphql.Object{
+	"LoginOutput": output.LoginOutput(),
 }

@@ -1,6 +1,8 @@
 package query
 
 import (
+	"backend-food/internal/pkg/domain/domain_model/entity"
+
 	"github.com/graphql-go/graphql"
 )
 
@@ -17,8 +19,8 @@ func LoginQuery(outputType map[string]*graphql.Object) *graphql.Field {
 			},
 		},
 		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-
-			return nil, nil
+			token := "12356"
+			return entity.Users{Token: &token}, nil
 		},
 	}
 }

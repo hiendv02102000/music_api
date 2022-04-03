@@ -1,11 +1,9 @@
 package main
 
-import (
-	"backend-food/pkg/infrastucture/db"
-	"fmt"
-)
+import "backend-food/internal/api/router"
 
 func main() {
-	_, err := db.NewDB()
-	fmt.Print(err)
+
+	r := router.NewRouter()
+	r.Engine.Run(":8080")
 }
