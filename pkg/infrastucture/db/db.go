@@ -45,6 +45,13 @@ func (db *Database) Find(condition interface{}, value interface{}) error {
 	}
 	return err
 }
+func (db *Database) FindWithPagination(condition interface{}, offset int, pageSize int, value interface{}) error {
+	err := db.DB.Offset(offset).Limit(pageSize).Find(value, condition).Error
+	if gorm.IsRecordNotFoundError(err) {
+		return nil
+	}
+	return err
+}
 func (db *Database) Create(value interface{}) error {
 	//	fmt.Println(value)
 	err := db.DB.Create(value).Error
