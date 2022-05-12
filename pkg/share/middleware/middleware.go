@@ -1,10 +1,11 @@
 package middleware
 
 import (
-	"be_soc/internal/pkg/domain/domain_model/dto"
-	"be_soc/internal/pkg/domain/domain_model/entity"
-	"be_soc/internal/pkg/repository"
-	"be_soc/pkg/infrastucture/db"
+	"backend-food/internal/pkg/domain/domain_model/dto"
+	"backend-food/internal/pkg/domain/domain_model/entity"
+	"backend-food/internal/pkg/repository"
+	"backend-food/pkg/infrastucture/db"
+
 	"net/http"
 	"strings"
 	"time"
@@ -37,9 +38,7 @@ func AuthClientMiddleware(db db.Database) gin.HandlerFunc {
 		}
 		extractedToken := strings.Split(clientToken, "Bearer ")
 		clientToken = strings.TrimSpace(extractedToken[1])
-		repo := repository.UserRepository{
-			DB: db,
-		}
+		repo := repository.NewUserRepository(db)
 		user, err := repo.FirstUser(entity.Users{
 			Token: &clientToken,
 		})
@@ -92,9 +91,7 @@ func AuthAdminMiddleware(db db.Database) gin.HandlerFunc {
 		}
 		extractedToken := strings.Split(clientToken, "Bearer ")
 		clientToken = strings.TrimSpace(extractedToken[1])
-		repo := repository.UserRepository{
-			DB: db,
-		}
+		repo := repository.NewUserRepository(db)
 		user, err := repo.FirstUser(entity.Users{
 			Token: &clientToken,
 		})

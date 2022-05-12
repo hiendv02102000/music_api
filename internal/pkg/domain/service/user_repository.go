@@ -1,6 +1,6 @@
 package service
 
-import "be_soc/internal/pkg/domain/domain_model/entity"
+import "backend-food/internal/pkg/domain/domain_model/entity"
 
 type UserRepositoryInterface interface {
 	FirstUser(condition entity.Users) (entity.Users, error)

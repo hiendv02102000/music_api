@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"be_soc/internal/pkg/domain/domain_model/entity"
-	"be_soc/pkg/infrastucture/db"
+	"backend-food/internal/pkg/domain/domain_model/entity"
+	"backend-food/pkg/infrastucture/db"
 )
 
 type userRepository struct {
@@ -29,7 +29,7 @@ func (u *userRepository) DeleteUser(user entity.Users) error {
 func (u *userRepository) UpdateUser(user, oldUser entity.Users) error {
 	return u.DB.Update(entity.Users{}, &oldUser, &user)
 }
-func NewuserRepository(db db.Database) *userRepository {
+func NewUserRepository(db db.Database) *userRepository {
 	return &userRepository{
 		DB: db,
 	}

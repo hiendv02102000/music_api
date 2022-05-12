@@ -1,9 +1,9 @@
 package handler
 
 import (
-	"be_soc/internal/pkg/domain/domain_model/dto"
-	"be_soc/pkg/infrastucture/db"
-	"be_soc/pkg/infrastucture/schema"
+	"backend-food/internal/pkg/domain/domain_model/dto"
+	"backend-food/pkg/infrastucture/db"
+	"backend-food/pkg/infrastucture/schema"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

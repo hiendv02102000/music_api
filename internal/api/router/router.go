@@ -1,10 +1,10 @@
 package router
 
 import (
-	"be_soc/internal/pkg/handler"
-	"be_soc/pkg/infrastucture/db"
-	"be_soc/pkg/share/middleware"
-	"be_soc/pkg/share/validators"
+	"backend-food/internal/pkg/handler"
+	"backend-food/pkg/infrastucture/db"
+	"backend-food/pkg/share/middleware"
+	"backend-food/pkg/share/validators"
 	"fmt"
 
 	"github.com/gin-gonic/gin"
