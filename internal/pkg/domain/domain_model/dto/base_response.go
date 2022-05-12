@@ -4,5 +4,5 @@ package dto
 type BaseResponse struct {
 	Status int         `json:"status"`
 	Result interface{} `json:"result"`
-	Error  string      `json:"error"`
+	Error  interface{} `json:"error"`
 }
