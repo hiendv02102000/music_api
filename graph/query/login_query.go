@@ -71,11 +71,15 @@ func LoginQuery(containerRepo map[string]interface{}) *graphql.Field {
 				TokenExpiredAt: &timeExpiredAt,
 			}
 			_, err = userRepo.UpdateUser(newUser, user)
-			result, err = json.Marshal(map[string]interface{}{
-				"token":            tokenString,
-				"token_expried_at": timeExpiredAt,
-				"role":             user.Role,
-			})
+			if err != nil {
+				return
+			}
+			loginRes := dto.LoginResponse{
+				Token:          tokenString,
+				TokenExpiredAt: timeExpiredAt,
+				Role:           string(user.Role),
+			}
+			result, err = json.Marshal(loginRes)
 			return
 		},
 	}
