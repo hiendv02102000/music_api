@@ -23,52 +23,57 @@ func CreateUserMutation(containerRepo map[string]interface{}) *graphql.Field {
 			},
 		},
 		Resolve: func(p graphql.ResolveParams) (result interface{}, err error) {
-			//arr := make([]map[string]interface{}, 0)
 			req := p.Args["user"].(map[string]interface{})
 			createUserReq := dto.CreateUserRequest{
 				Username:  req["username"].(string),
 				Password:  req["password"].(string),
 				FirstName: req["first_name"].(string),
 				LastName:  req["last_name"].(string),
+				Email:     req["email"].(string),
 			}
-			userRepo := containerRepo["user_repository"].(service.UserRepositoryInterface)
 			err = utils.CheckValidate(createUserReq)
 			if err != nil {
 				return
 			}
-			user, err := userRepo.FirstUser(entity.Users{
-				Username: createUserReq.Username,
-			})
+
+			userRepo := containerRepo["user_repository"].(service.UserRepositoryInterface)
+			user, err := userRepo.FirstUserListWithAnyCondition("SELECT * FROM users where username = ? OR email = ? ", createUserReq.Username, createUserReq.Email)
+
 			if err != nil {
 				return
 			}
+
 			if user.ID != 0 {
-				err = errors.New("User is exist")
+				if user.Username == createUserReq.Username {
+					err = errors.New("username already exists")
+					return
+				}
+				err = errors.New("email already exists")
 				return
 			}
 			createUserReq.Password = utils.EncryptPassword(createUserReq.Password)
 			user, err = userRepo.CreateUser(entity.Users{
-
-				FirstName: createUserReq.FirstName,
-				LastName:  createUserReq.LastName,
-				Username:  createUserReq.Username,
-				Password:  createUserReq.Password,
-				Role:      entity.ClientRole,
+				FirstName:    createUserReq.FirstName,
+				LastName:     createUserReq.LastName,
+				Username:     createUserReq.Username,
+				Email:        createUserReq.Email,
+				Password:     createUserReq.Password,
+				Role:         entity.ClientRole,
+				ActiveStatus: entity.ACTIVE_STATUS,
 			})
+
 			if err != nil {
 				return
 			}
-			result = map[string]interface{}{
-				"username":   user.Username,
-				"role":       user.Role,
-				"created_at": user.CreatedAt,
-				"first_name": user.FirstName,
-				"last_name":  user.LastName,
+			createUserRes := dto.CreateUserResponse{
+				Username:  user.Username,
+				FirstName: user.FirstName,
+				LastName:  user.LastName,
+				Email:     user.Email,
+				Role:      string(user.Role),
+				CreatedAt: utils.FormatTime(user.CreatedAt),
 			}
-			// timeNow := time.Now()
-
-			// newUser := entity.Users{Username: loginReq.Username,
-			// 	Password: loginReq.Password}
+			result = createUserRes
 			return
 		},
 	}

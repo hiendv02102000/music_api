@@ -70,6 +70,13 @@ func (db *Database) Update(model interface{}, oldVal interface{}, newVal interfa
 	//fmt.Println(err)
 	return db.DB.Model(model).Where(oldVal).Updates(newVal).Error
 }
-func (db *Database) ExcQuery(query string) error {
-	return db.DB.Exec(query).Error
+func (db *Database) ExcQuery(out interface{}, query string, values ...interface{}) error {
+	return db.DB.Exec(query, values...).Scan(out).Error
+}
+func (db *Database) RawQuery(out interface{}, query string, values ...interface{}) error {
+	err := db.DB.Raw(query, values...).Scan(out).Error
+	if gorm.IsRecordNotFoundError(err) {
+		return nil
+	}
+	return err
 }

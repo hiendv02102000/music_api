@@ -19,8 +19,11 @@ func CreateUserOutput() *graphql.Object {
 				"role": &graphql.Field{
 					Type: graphql.String,
 				},
+				"email": &graphql.Field{
+					Type: graphql.String,
+				},
 				"created_at": &graphql.Field{
-					Type: graphql.DateTime,
+					Type: graphql.String,
 				},
 			},
 		},

@@ -8,7 +8,6 @@ import (
 	"backend-food/internal/pkg/domain/service"
 	"backend-food/pkg/share/middleware"
 	"backend-food/pkg/share/utils"
-	"encoding/json"
 	"errors"
 	"time"
 
@@ -71,15 +70,13 @@ func LoginQuery(containerRepo map[string]interface{}) *graphql.Field {
 				TokenExpiredAt: &timeExpiredAt,
 			}
 			_, err = userRepo.UpdateUser(newUser, user)
-			if err != nil {
-				return
-			}
+
 			loginRes := dto.LoginResponse{
 				Token:          tokenString,
 				TokenExpiredAt: timeExpiredAt,
 				Role:           string(user.Role),
 			}
-			result, err = json.Marshal(loginRes)
+			result = loginRes
 			return
 		},
 	}
