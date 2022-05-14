@@ -33,3 +33,7 @@ type Users struct {
 	TokenExpiredAt *time.Time       `gorm:"column:token_expired_at"`
 	BaseModel
 }
+
+func (u *Users) TableName() string {
+	return "users"
+}
