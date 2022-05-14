@@ -63,7 +63,7 @@ func AuthClientMiddleware(db db.Database) gin.HandlerFunc {
 			return
 		}
 		timeNow := time.Now()
-		if timeNow.After(*user.TokenExpriedAt) {
+		if timeNow.After(*user.TokenExpiredAt) {
 			data := dto.BaseResponse{
 				Status: http.StatusUnauthorized,
 				Error:  "Token Expired",
@@ -116,7 +116,7 @@ func AuthAdminMiddleware(db db.Database) gin.HandlerFunc {
 			return
 		}
 		timeNow := time.Now()
-		if timeNow.After(*user.TokenExpriedAt) {
+		if timeNow.After(*user.TokenExpiredAt) {
 			data := dto.BaseResponse{
 				Status: http.StatusUnauthorized,
 				Error:  "Token Expired",

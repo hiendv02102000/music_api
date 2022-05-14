@@ -4,7 +4,7 @@ import "github.com/graphql-go/graphql"
 
 func UserInput() *graphql.InputObject {
 	return graphql.NewInputObject(graphql.InputObjectConfig{
-		Name: "CreateUserInput",
+		Name: "UserInput",
 		Fields: graphql.InputObjectConfigFieldMap{
 			"username": &graphql.InputObjectFieldConfig{
 				Type: graphql.String,
@@ -16,6 +16,9 @@ func UserInput() *graphql.InputObject {
 				Type: graphql.String,
 			},
 			"last_name": &graphql.InputObjectFieldConfig{
+				Type: graphql.String,
+			},
+			"email": &graphql.InputObjectFieldConfig{
 				Type: graphql.String,
 			},
 		},

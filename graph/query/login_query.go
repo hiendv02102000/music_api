@@ -8,6 +8,7 @@ import (
 	"backend-food/internal/pkg/domain/service"
 	"backend-food/pkg/share/middleware"
 	"backend-food/pkg/share/utils"
+	"encoding/json"
 	"errors"
 	"time"
 
@@ -47,18 +48,18 @@ func LoginQuery(containerRepo map[string]interface{}) *graphql.Field {
 				return
 			}
 			if user.ID == 0 {
-				err = errors.New("Login fail")
+				err = errors.New(utils.LOGIN_FAIL_ERROR)
 				return
 			}
 			timeNow := time.Now()
 
-			timeExpriedAt := timeNow.Add(time.Hour * 2)
+			timeExpiredAt := timeNow.Add(time.Hour * 48)
 			// generate uuid
 			uuid := uuid.Must(uuid.NewV4(), nil)
 			tokenString, err := middleware.GenerateJWTToken(middleware.JWTParam{
 				UUID:       uuid,
 				Authorized: true,
-				ExpriedAt:  timeExpriedAt,
+				ExpriedAt:  timeExpiredAt,
 			})
 
 			if err != nil {
@@ -67,15 +68,14 @@ func LoginQuery(containerRepo map[string]interface{}) *graphql.Field {
 
 			newUser := entity.Users{
 				Token:          &tokenString,
-				TokenExpriedAt: &timeExpriedAt,
+				TokenExpiredAt: &timeExpiredAt,
 			}
 			_, err = userRepo.UpdateUser(newUser, user)
-			result = map[string]interface{}{
-				"token":            newUser.Token,
-				"token_expried_at": newUser.TokenExpriedAt,
+			result, err = json.Marshal(map[string]interface{}{
+				"token":            tokenString,
+				"token_expried_at": timeExpiredAt,
 				"role":             user.Role,
-			}
-
+			})
 			return
 		},
 	}

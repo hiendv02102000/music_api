@@ -9,7 +9,7 @@ import (
 	"github.com/cloudinary/cloudinary-go/api/uploader"
 )
 
-var PUBLIC_FOLDER = "backend-food/go/"
+const PUBLIC_FOLDER = "backend-food/go/"
 
 func UploadImageToCloud(file io.Reader, id_file string, width int, height int) (url string, err error) {
 	cld, err := cloudinary.NewFromParams("dtctadira", "658231379476276", "c8yMID5XRYNirCK5jjCCzuj0HE0")
