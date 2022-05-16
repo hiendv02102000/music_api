@@ -19,7 +19,7 @@ func FormatTime(time time.Time) string {
 }
 func FormatStringSpace(s string) string {
 
-	words := strings.Split(s, " ")
+	words := strings.Fields(s)
 	res := ""
 	for _, word := range words {
 		if len(word) == 0 {
