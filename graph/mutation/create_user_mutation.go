@@ -23,6 +23,10 @@ func CreateUserMutation(containerRepo map[string]interface{}) *graphql.Field {
 			},
 		},
 		Resolve: func(p graphql.ResolveParams) (result interface{}, err error) {
+			if p.Args["user"] == nil {
+				err = errors.New("user is required")
+				return
+			}
 			req := p.Args["user"].(map[string]interface{})
 			createUserReq := dto.CreateUserRequest{
 				Username:  req["username"].(string),

@@ -55,5 +55,5 @@ func (h *HTTPAdminHandler) Handle(c *gin.Context) {
 		Error:  data.Errors,
 		Result: data.Data,
 	}
-	c.JSON(http.StatusOK, resp)
+	c.JSON(code, resp)
 }

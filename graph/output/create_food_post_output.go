@@ -5,7 +5,7 @@ import "github.com/graphql-go/graphql"
 func CreateFoodPostOutput() *graphql.Object {
 	return graphql.NewObject(
 		graphql.ObjectConfig{
-			Name: "CreateUserOutput",
+			Name: "CreateFoodPostOutput", // string not space
 			Fields: graphql.Fields{
 				"title": &graphql.Field{
 					Type: graphql.String,
@@ -16,11 +16,10 @@ func CreateFoodPostOutput() *graphql.Object {
 				"dish": &graphql.Field{
 					Type: graphql.String,
 				},
-				"role": &graphql.Field{
-					Type: graphql.String,
-				},
-				"email": &graphql.Field{
-					Type: graphql.String,
+				"tags": &graphql.Field{
+					Type: &graphql.List{
+						OfType: graphql.String,
+					},
 				},
 				"created_at": &graphql.Field{
 					Type: graphql.String,

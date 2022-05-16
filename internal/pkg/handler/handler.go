@@ -52,5 +52,5 @@ func (h *HTTPHandler) Handle(c *gin.Context) {
 		Result: data.Data,
 	}
 
-	c.JSON(http.StatusOK, resp)
+	c.JSON(code, resp)
 }

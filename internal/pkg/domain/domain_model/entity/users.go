@@ -29,6 +29,7 @@ type Users struct {
 	Password       string           `gorm:"column:password;not null"`
 	Role           userRole         `gorm:"column:role"`
 	ActiveStatus   activeStatusUser `gorm:"column:active_status"`
+	AvatarUrl      *string          `gorm:"column:avatar_url"`
 	Token          *string          `gorm:"column:token"`
 	TokenExpiredAt *time.Time       `gorm:"column:token_expired_at"`
 	BaseModel

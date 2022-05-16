@@ -6,6 +6,9 @@ func UserInput() *graphql.InputObject {
 	return graphql.NewInputObject(graphql.InputObjectConfig{
 		Name: "UserInput",
 		Fields: graphql.InputObjectConfigFieldMap{
+			"id": &graphql.InputObjectFieldConfig{
+				Type: graphql.Int,
+			},
 			"username": &graphql.InputObjectFieldConfig{
 				Type: graphql.String,
 			},

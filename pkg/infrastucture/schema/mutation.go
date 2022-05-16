@@ -17,8 +17,10 @@ func GetAnonymousMutation(containerRepo map[string]interface{}) *graphql.Object 
 
 func GetClientMutation(containerRepo map[string]interface{}) *graphql.Object {
 	return graphql.NewObject(graphql.ObjectConfig{
-		Name:   "mutation",
-		Fields: graphql.Fields{},
+		Name: "mutation",
+		Fields: graphql.Fields{
+			"create_food": mutation.CreateFoodPostMutation(containerRepo),
+		},
 	})
 }
 func GetAdminMutation(containerRepo map[string]interface{}) *graphql.Object {
