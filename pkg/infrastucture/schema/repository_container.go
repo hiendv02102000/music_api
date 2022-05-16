@@ -8,7 +8,7 @@ import (
 func GetContainerRepo(data db.Database) map[string]interface{} {
 
 	return map[string]interface{}{
-		"user_repository":      repository.NewUserRepository(data),
-		"food_post_repository": repository.NewFoodPostRepository(data),
+		"user_repository": repository.NewUserRepository(data),
+		//"food_post_repository": repository.NewFoodPostRepository(data),
 	}
 }

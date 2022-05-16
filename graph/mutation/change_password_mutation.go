@@ -43,7 +43,7 @@ func ChangePasswordMutation(containerRepo map[string]interface{}) *graphql.Field
 				return
 			}
 
-			userRepo := containerRepo["user_repository"].(service.UserRepositoryInterface)
+			userRepo := containerRepo["user_repository"].(service.UserRepository)
 			changePasswordReq.Password = utils.EncryptPassword(changePasswordReq.Password)
 
 			timeNow := time.Now()
