@@ -28,18 +28,27 @@ func NewDB() (Database, error) {
 	}, err
 }
 func (db *Database) MigrateDBWithGorm() {
-	db.DB.AutoMigrate(entity.Users{}, entity.Comment{}, entity.Dish{}, entity.FoodPost{}, entity.Tag{})
+	db.DB.AutoMigrate(entity.Users{}, entity.Comment{}, entity.FoodPost{}, entity.Tag{})
 }
-func (db *Database) First(condition interface{}, value interface{}) error {
+func (db *Database) Begin() Database {
+	return Database{
+		DB: db.DB.Begin(),
+	}
+}
+func (db *Database) RollBack() {
+	db.DB.Rollback()
+}
+func (db *Database) Commit() error {
+	return db.DB.Commit().Error
+}
+func (db *Database) First(value interface{}, condition interface{}) error {
 	err := db.DB.First(value, condition).Error
-
 	if gorm.IsRecordNotFoundError(err) {
 		return nil
 	}
-
 	return err
 }
-func (db *Database) Find(condition interface{}, value interface{}) error {
+func (db *Database) Find(value interface{}, condition interface{}) error {
 	err := db.DB.Find(value, condition).Error
 	if gorm.IsRecordNotFoundError(err) {
 		return nil

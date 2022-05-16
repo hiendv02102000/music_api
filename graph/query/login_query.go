@@ -25,7 +25,10 @@ func LoginQuery(containerRepo map[string]interface{}) *graphql.Field {
 			},
 		},
 		Resolve: func(p graphql.ResolveParams) (result interface{}, err error) {
-
+			if p.Args["user"] == nil {
+				err = errors.New("user is required")
+				return
+			}
 			req := p.Args["user"].(map[string]interface{})
 			loginReq := dto.LoginRequest{
 				Username: req["username"].(string),
@@ -46,6 +49,7 @@ func LoginQuery(containerRepo map[string]interface{}) *graphql.Field {
 			if err != nil {
 				return
 			}
+
 			if user.ID == 0 {
 				err = errors.New(utils.LOGIN_FAIL_ERROR)
 				return
