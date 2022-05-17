@@ -7,6 +7,9 @@ func CreateCommentOutput() *graphql.Object {
 		graphql.ObjectConfig{
 			Name: "CreateCommentOutput",
 			Fields: graphql.Fields{
+				"id": &graphql.Field{
+					Type: graphql.Int,
+				},
 				"content": &graphql.Field{
 					Type: graphql.String,
 				},

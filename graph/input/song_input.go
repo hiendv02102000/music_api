@@ -2,17 +2,20 @@ package input
 
 import "github.com/graphql-go/graphql"
 
-func CommentInput() *graphql.InputObject {
+func SongInput() *graphql.InputObject {
 	return graphql.NewInputObject(graphql.InputObjectConfig{
-		Name: "Comment Input",
+		Name: "UserInput",
 		Fields: graphql.InputObjectConfigFieldMap{
 			"id": &graphql.InputObjectFieldConfig{
 				Type: graphql.Int,
 			},
-			"content": &graphql.InputObjectFieldConfig{
+			"title": &graphql.InputObjectFieldConfig{
 				Type: graphql.String,
 			},
-			"song_id": &graphql.InputObjectFieldConfig{
+			"decription": &graphql.InputObjectFieldConfig{
+				Type: graphql.String,
+			},
+			"user_id": &graphql.InputObjectFieldConfig{
 				Type: graphql.Int,
 			},
 		},
