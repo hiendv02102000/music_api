@@ -40,7 +40,7 @@ func CreateUserMutation(containerRepo map[string]interface{}) *graphql.Field {
 				return
 			}
 
-			userRepo := containerRepo["user_repository"].(service.UserRepositoryInterface)
+			userRepo := containerRepo["user_repository"].(service.UserRepository)
 			user, err := userRepo.FirstUserListWithAnyCondition("SELECT * FROM users where username = ? OR email = ? ", createUserReq.Username, createUserReq.Email)
 
 			if err != nil {

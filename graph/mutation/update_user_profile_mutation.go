@@ -40,7 +40,7 @@ func UpdateUserProfileMutation(containerRepo map[string]interface{}) *graphql.Fi
 			if err != nil {
 				return
 			}
-			userRepo := containerRepo["user_repository"].(service.UserRepositoryInterface)
+			userRepo := containerRepo["user_repository"].(service.UserRepository)
 			newUser := entity.Users{FirstName: updateUserProfileReq.FirstName, LastName: updateUserProfileReq.LastName}
 			file, _ := ctx.FormFile("file")
 			if file != nil {

@@ -2,26 +2,27 @@ package output
 
 import "github.com/graphql-go/graphql"
 
-func CreateFoodPostOutput() *graphql.Object {
+func UpdateSongOutput() *graphql.Object {
 	return graphql.NewObject(
 		graphql.ObjectConfig{
-			Name: "CreateFoodPostOutput", // string not space
+			Name: "UpdateSongOutput",
 			Fields: graphql.Fields{
+				"id": &graphql.Field{
+					Type: graphql.Int,
+				},
 				"title": &graphql.Field{
 					Type: graphql.String,
 				},
-				"content": &graphql.Field{
+				"content_url": &graphql.Field{
 					Type: graphql.String,
 				},
-				"dish": &graphql.Field{
+				"image_url": &graphql.Field{
 					Type: graphql.String,
 				},
-				"tags": &graphql.Field{
-					Type: &graphql.List{
-						OfType: graphql.String,
-					},
+				"decription": &graphql.Field{
+					Type: graphql.String,
 				},
-				"created_at": &graphql.Field{
+				"updated_at": &graphql.Field{
 					Type: graphql.String,
 				},
 			},

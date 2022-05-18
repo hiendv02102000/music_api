@@ -40,7 +40,7 @@ func LoginQuery(containerRepo map[string]interface{}) *graphql.Field {
 				return
 			}
 			loginReq.Password = utils.EncryptPassword(loginReq.Password)
-			userRepo := containerRepo["user_repository"].(service.UserRepositoryInterface)
+			userRepo := containerRepo["user_repository"].(service.UserRepository)
 
 			user, err := userRepo.FirstUser(entity.Users{
 				Username: loginReq.Username,

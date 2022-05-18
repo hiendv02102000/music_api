@@ -30,7 +30,7 @@ func GetProfileUserQuery(containerRepo map[string]interface{}) *graphql.Field {
 				req := p.Args["user"].(map[string]interface{})
 				if req["id"] != nil {
 					user.ID = req["id"].(int)
-					userRepo := containerRepo["user_repository"].(service.UserRepositoryInterface)
+					userRepo := containerRepo["user_repository"].(service.UserRepository)
 					user, err = userRepo.FirstUser(user)
 					if err != nil {
 						return
