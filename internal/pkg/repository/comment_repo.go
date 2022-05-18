@@ -3,6 +3,7 @@ package repository
 import (
 	"backend-food/internal/pkg/domain/domain_model/entity"
 	"backend-food/pkg/infrastucture/db"
+	"fmt"
 )
 
 type commentRepository struct {
@@ -14,7 +15,12 @@ func (u *commentRepository) FindCommentList(condition entity.Comment) (comments 
 	return
 }
 func (u *commentRepository) FindCommentListWithPagination(condition entity.Comment, pageNum int, pageSize int) (comments []entity.Comment, err error) {
-	err = u.DB.FindWithPagination(&comments, (pageNum-1)*pageSize, pageSize, condition)
+	offset := (pageNum - 1) * pageSize
+	sql := "SELECT * FROM comment \n" +
+		" ORDER BY created_at DESC\n" +
+		" LIMIT " + fmt.Sprintf("%d,%d", offset, pageSize) + " ;"
+
+	err = u.DB.RawQuery(&comments, sql)
 	return
 }
 func (u *commentRepository) CreateComment(comment entity.Comment) (entity.Comment, error) {

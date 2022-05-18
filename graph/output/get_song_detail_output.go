@@ -29,37 +29,16 @@ func GetSongDetailOutput() *graphql.Object {
 					Type: graphql.String,
 				},
 				"user": &graphql.Field{
-					Type: graphql.NewObject(graphql.ObjectConfig{
-						Name:   "user_detail_song",
-						Fields: userSongOutput(),
-					}),
+					Type: userInfoOutput(),
 				},
-				// "comments": &graphql.Field{
-				// 	Type: &graphql.List{
-				// 		OfType: graphql.NewObject(graphql.ObjectConfig{
-				// 			Name: "commentsDetailSongOutput",
-				// 			Fields: graphql.Fields{
-				// 				"id": &graphql.Field{
-				// 					Type: graphql.Int,
-				// 				},
-				// 				"user": &graphql.Field{
-				// 					Type: userSongOutput(),
-				// 				},
-				// 				"content": &graphql.Field{
-				// 					Type: graphql.String,
-				// 				},
-				// 			},
-				// 		}),
-				// 	},
-				// },
 			},
 		},
 	)
 }
-func userSongOutput() *graphql.Object {
+func userInfoOutput() *graphql.Object {
 	return graphql.NewObject(
 		graphql.ObjectConfig{
-			Name: "userSongOutput",
+			Name: "userInfoOutput",
 			Fields: graphql.Fields{
 				"id": &graphql.Field{
 					Type: graphql.Int,

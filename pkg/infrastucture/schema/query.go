@@ -20,6 +20,9 @@ func GetClientQuery(containerRepo map[string]interface{}) *graphql.Object {
 		Name: "query",
 		Fields: graphql.Fields{
 			"get_user_profile": query.GetProfileUserQuery(containerRepo),
+			"get_song_list":    query.GetSongListQuery(containerRepo),
+			"get_song_detail":  query.GetSongDetailQuery(containerRepo),
+			"get_comment_song": query.GetCommentSongQuery(containerRepo),
 		},
 	})
 }

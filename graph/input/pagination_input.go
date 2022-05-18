@@ -7,10 +7,10 @@ func PaginationInput() *graphql.InputObject {
 		Name: "PaginationInput",
 		Fields: graphql.InputObjectConfigFieldMap{
 			"page_num": &graphql.InputObjectFieldConfig{
-				Type: graphql.String,
+				Type: graphql.Int,
 			},
 			"page_size": &graphql.InputObjectFieldConfig{
-				Type: graphql.String,
+				Type: graphql.Int,
 			},
 		},
 	})

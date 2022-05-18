@@ -14,7 +14,7 @@ func CreateCommentOutput() *graphql.Object {
 					Type: graphql.String,
 				},
 				"song_id": &graphql.Field{
-					Type: graphql.DateTime,
+					Type: graphql.Int,
 				},
 			},
 		},

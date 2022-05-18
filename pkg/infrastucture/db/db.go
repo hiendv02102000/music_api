@@ -55,7 +55,7 @@ func (db *Database) Find(value interface{}, condition interface{}) error {
 	}
 	return err
 }
-func (db *Database) FindWithPagination(condition interface{}, offset int, pageSize int, value interface{}) error {
+func (db *Database) FindWithPagination(value interface{}, offset int, pageSize int, condition interface{}) error {
 	err := db.DB.Offset(offset).Limit(pageSize).Find(value, condition).Error
 	if gorm.IsRecordNotFoundError(err) {
 		return nil

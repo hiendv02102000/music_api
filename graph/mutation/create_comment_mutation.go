@@ -16,7 +16,7 @@ import (
 
 func CreateCommentMutation(containerRepo map[string]interface{}) *graphql.Field {
 	return &graphql.Field{
-		Type:        output.CreateSongOutput(),
+		Type:        output.CreateCommentOutput(),
 		Description: "create a comment",
 
 		Args: graphql.FieldConfigArgument{

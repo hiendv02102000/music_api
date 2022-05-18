@@ -21,9 +21,14 @@ func (u *songRepository) FindSongList(condition entity.Song) (song []entity.Song
 }
 func (u *songRepository) FindSongListWithPagination(condition entity.Song, pageNum int, pageSize int) (songs []entity.Song, err error) {
 	offset := (pageNum - 1) * pageSize
+	userClause := ""
+	if condition.UserID > 0 {
+		userClause = fmt.Sprintf(" AND user_id = %d \n", condition.UserID)
+	}
 	sql := "SELECT * FROM songs where\n" +
 		" title LIKE '%" + condition.Title + "%' AND \n" +
 		" decription LIKE '%" + condition.Decription + "%'\n" +
+		userClause +
 		" ORDER BY view DESC\n" +
 		" LIMIT " + fmt.Sprintf("%d,%d", offset, pageSize) + " ;"
 	err = u.DB.RawQuery(&songs, sql)
