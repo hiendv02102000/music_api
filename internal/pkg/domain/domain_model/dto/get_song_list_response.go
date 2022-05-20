@@ -12,4 +12,5 @@ type SongResponse struct {
 	ImageURL   *string `json:"image_url"`
 	Decription string  `json:"decription"`
 	CreatedAt  string  `json:"created_at"`
+	Singer     string  `json:"singer"`
 }

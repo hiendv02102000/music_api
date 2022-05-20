@@ -33,6 +33,9 @@ func GetSongListOutput() *graphql.Object {
 								"created_at": &graphql.Field{
 									Type: graphql.String,
 								},
+								"singer": &graphql.Field{
+									Type: graphql.String,
+								},
 							},
 						}),
 					},

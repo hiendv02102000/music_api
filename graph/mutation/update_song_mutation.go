@@ -36,6 +36,7 @@ func UpdateSongMutation(containerRepo map[string]interface{}) *graphql.Field {
 				SongID:      req["id"].(int),
 				Title:       req["title"].(string),
 				Description: req["decription"].(string),
+				Singer:      req["singer"].(string),
 			}
 			err = utils.CheckValidate(updateSongReq)
 			if err != nil {
@@ -45,6 +46,7 @@ func UpdateSongMutation(containerRepo map[string]interface{}) *graphql.Field {
 			newSong := entity.Song{
 				Title:      updateSongReq.Title,
 				Decription: updateSongReq.Description,
+				Singer:     updateSongReq.Singer,
 			}
 			imgFile, _ := ctx.FormFile("image_file")
 			if imgFile != nil {
@@ -96,6 +98,7 @@ func UpdateSongMutation(containerRepo map[string]interface{}) *graphql.Field {
 				ContentURL:  song.ContentURL,
 				ImageURL:    song.ImageURL,
 				Description: song.Decription,
+				Singer:      song.Singer,
 				UpdatedAt:   utils.FormatTime(song.UpdatedAt),
 			}
 			return

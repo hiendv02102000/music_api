@@ -27,7 +27,7 @@ func (u *songRepository) FindSongListWithPagination(condition entity.Song, pageN
 	}
 	sql := "SELECT * FROM songs where\n" +
 		" title LIKE '%" + condition.Title + "%' AND \n" +
-		" decription LIKE '%" + condition.Decription + "%'\n" +
+		" singer LIKE '%" + condition.Singer + "%'\n" +
 		userClause +
 		" ORDER BY view DESC\n" +
 		" LIMIT " + fmt.Sprintf("%d,%d", offset, pageSize) + " ;"

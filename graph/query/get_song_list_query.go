@@ -35,8 +35,8 @@ func GetSongListQuery(containerRepo map[string]interface{}) *graphql.Field {
 				if reqSong["title"] != nil {
 					song.Title = reqSong["title"].(string)
 				}
-				if reqSong["decription"] != nil {
-					song.Decription = reqSong["decription"].(string)
+				if reqSong["singer"] != nil {
+					song.Singer = reqSong["singer"].(string)
 				}
 				if reqSong["user_id"] != nil {
 					song.UserID = reqSong["user_id"].(int)
@@ -58,6 +58,7 @@ func GetSongListQuery(containerRepo map[string]interface{}) *graphql.Field {
 					ImageURL:   v.ImageURL,
 					Decription: v.Decription,
 					CreatedAt:  utils.FormatTime(v.CreatedAt),
+					Singer:     v.Singer,
 				}
 			}
 			result = dto.GetSongListResponse{

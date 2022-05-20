@@ -35,6 +35,7 @@ func CreateSongMutation(containerRepo map[string]interface{}) *graphql.Field {
 			createSongReq := dto.CreateSongRequest{
 				Title:       req["title"].(string),
 				Description: req["decription"].(string),
+				Singer:      req["singer"].(string),
 			}
 			err = utils.CheckValidate(createSongReq)
 			if err != nil {
@@ -45,6 +46,7 @@ func CreateSongMutation(containerRepo map[string]interface{}) *graphql.Field {
 				Title:      createSongReq.Title,
 				UserID:     user.ID,
 				Decription: createSongReq.Description,
+				Singer:     createSongReq.Singer,
 			}
 			imgFile, _ := ctx.FormFile("image_file")
 			if imgFile != nil {
@@ -71,7 +73,7 @@ func CreateSongMutation(containerRepo map[string]interface{}) *graphql.Field {
 				err = errFile
 				return
 			}
-			url, errUpload := utils.UploadFile(ioFile, contentFile.Filename, []string{"music"})
+			url, errUpload := utils.UploadFile(ioFile, utils.RemoveEndFile(contentFile.Filename), []string{"music"})
 			if errUpload != nil {
 				err = errUpload
 				return
@@ -87,6 +89,7 @@ func CreateSongMutation(containerRepo map[string]interface{}) *graphql.Field {
 				ContentURL:  song.ContentURL,
 				ImageURL:    song.ImageURL,
 				Description: song.Decription,
+				Singer:      song.Singer,
 				CreatedAt:   utils.FormatTime(song.CreatedAt),
 			}
 			return

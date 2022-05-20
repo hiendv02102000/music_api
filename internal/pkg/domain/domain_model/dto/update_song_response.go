@@ -8,4 +8,5 @@ type UpdateSongResponse struct {
 	ImageURL    *string `json:"image_url"`
 	Description string  `json:"decription"`
 	UpdatedAt   string  `json:"updated_at"`
+	Singer      string  `json:"singer"`
 }
