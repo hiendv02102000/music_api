@@ -12,6 +12,9 @@ func SongInput() *graphql.InputObject {
 			"title": &graphql.InputObjectFieldConfig{
 				Type: graphql.String,
 			},
+			"singer": &graphql.InputObjectFieldConfig{
+				Type: graphql.String,
+			},
 			"decription": &graphql.InputObjectFieldConfig{
 				Type: graphql.String,
 			},

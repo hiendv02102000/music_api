@@ -17,6 +17,7 @@ func (u *commentRepository) FindCommentList(condition entity.Comment) (comments 
 func (u *commentRepository) FindCommentListWithPagination(condition entity.Comment, pageNum int, pageSize int) (comments []entity.Comment, err error) {
 	offset := (pageNum - 1) * pageSize
 	sql := "SELECT * FROM comment \n" +
+		" WHERE song_id =" + fmt.Sprint(condition.SongID) + "\n" +
 		" ORDER BY created_at DESC\n" +
 		" LIMIT " + fmt.Sprintf("%d,%d", offset, pageSize) + " ;"
 

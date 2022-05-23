@@ -52,6 +52,7 @@ func GetSongDetailQuery(containerRepo map[string]interface{}) *graphql.Field {
 				ImageURL:   song.ImageURL,
 				Decription: song.Decription,
 				CreatedAt:  utils.FormatTime(song.CreatedAt),
+				Singer:     song.Singer,
 			}
 			return
 		},

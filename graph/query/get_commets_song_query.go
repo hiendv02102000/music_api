@@ -34,6 +34,7 @@ func GetCommentSongQuery(containerRepo map[string]interface{}) *graphql.Field {
 			}
 			reqPage := p.Args["page"].(map[string]interface{})
 			reqSong := p.Args["song"].(map[string]interface{})
+
 			song := entity.Song{
 				ID: reqSong["id"].(int),
 			}

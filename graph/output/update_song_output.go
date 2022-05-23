@@ -25,6 +25,9 @@ func UpdateSongOutput() *graphql.Object {
 				"updated_at": &graphql.Field{
 					Type: graphql.String,
 				},
+				"singer": &graphql.Field{
+					Type: graphql.String,
+				},
 			},
 		},
 	)

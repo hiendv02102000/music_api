@@ -13,6 +13,9 @@ func CreateSongOutput() *graphql.Object {
 				"title": &graphql.Field{
 					Type: graphql.String,
 				},
+				"singer": &graphql.Field{
+					Type: graphql.String,
+				},
 				"content_url": &graphql.Field{
 					Type: graphql.String,
 				},

@@ -56,6 +56,6 @@ func UploadFile(file io.Reader, id_file string, tags []string) (url string, err 
 	publicId := PUBLIC_FOLDER + id_file
 	res, err := cld.Upload.Upload(ctx, file, uploader.UploadParams{PublicID: publicId,
 		Transformation: "c_crop,g_center/q_auto/f_auto", Tags: tags})
-	url = res.URL
+	url = res.SecureURL
 	return
 }

@@ -31,6 +31,9 @@ func GetSongDetailOutput() *graphql.Object {
 				"user": &graphql.Field{
 					Type: userInfoOutput(),
 				},
+				"singer": &graphql.Field{
+					Type: graphql.String,
+				},
 			},
 		},
 	)

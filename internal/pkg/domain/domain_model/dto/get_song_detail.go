@@ -10,6 +10,7 @@ type GetSongDetailResponse struct {
 	Decription string       `json:"decription"`
 	CreatedAt  string       `json:"created_at"`
 	UserSong   UserResponse `json:"user"`
+	Singer     string       `json:"singer"`
 }
 type UserResponse struct {
 	Username  string  `json:"username"`
