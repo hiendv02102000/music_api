@@ -4,8 +4,8 @@ import (
 
 	// import source file
 
-	"backend-food/internal/pkg/domain/domain_model/entity"
 	"fmt"
+	"music-api/internal/pkg/domain/domain_model/entity"
 
 	_ "github.com/golang-migrate/migrate/v4/source/file"
 

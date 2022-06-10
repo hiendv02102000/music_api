@@ -1,11 +1,11 @@
 package router
 
 import (
-	"backend-food/internal/pkg/handler"
-	"backend-food/pkg/infrastucture/db"
-	"backend-food/pkg/share/middleware"
-	"backend-food/pkg/share/validators"
 	"fmt"
+	"music-api/internal/pkg/handler"
+	"music-api/pkg/infrastucture/db"
+	"music-api/pkg/share/middleware"
+	"music-api/pkg/share/validators"
 
 	"github.com/gin-gonic/gin"
 )
