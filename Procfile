@@ -1,1 +1,1 @@
-web: bin/be_soc
+web: bin/music_api_soc
