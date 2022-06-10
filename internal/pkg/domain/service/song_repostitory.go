@@ -1,6 +1,6 @@
 package service
 
-import "backend-food/internal/pkg/domain/domain_model/entity"
+import "music-api/internal/pkg/domain/domain_model/entity"
 
 type SongRepository interface {
 	FirstSong(entity.Song) (entity.Song, error)

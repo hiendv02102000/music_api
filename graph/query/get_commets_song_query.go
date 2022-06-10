@@ -1,12 +1,12 @@
 package query
 
 import (
-	"backend-food/graph/input"
-	"backend-food/graph/output"
-	"backend-food/internal/pkg/domain/domain_model/dto"
-	"backend-food/internal/pkg/domain/domain_model/entity"
-	"backend-food/internal/pkg/domain/service"
 	"errors"
+	"music-api/graph/input"
+	"music-api/graph/output"
+	"music-api/internal/pkg/domain/domain_model/dto"
+	"music-api/internal/pkg/domain/domain_model/entity"
+	"music-api/internal/pkg/domain/service"
 
 	"github.com/graphql-go/graphql"
 )

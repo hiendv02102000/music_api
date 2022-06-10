@@ -1,9 +1,9 @@
 package repository
 
 import (
-	"backend-food/internal/pkg/domain/domain_model/entity"
-	"backend-food/pkg/infrastucture/db"
 	"fmt"
+	"music-api/internal/pkg/domain/domain_model/entity"
+	"music-api/pkg/infrastucture/db"
 )
 
 type songRepository struct {

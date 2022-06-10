@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"backend-food/internal/pkg/domain/domain_model/entity"
-	"backend-food/pkg/infrastucture/db"
+	"music-api/internal/pkg/domain/domain_model/entity"
+	"music-api/pkg/infrastucture/db"
 )
 
 type userRepository struct {

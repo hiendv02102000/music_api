@@ -1,9 +1,9 @@
 package handler
 
 import (
-	"backend-food/internal/pkg/domain/domain_model/dto"
-	"backend-food/pkg/infrastucture/db"
-	"backend-food/pkg/infrastucture/schema"
+	"music-api/internal/pkg/domain/domain_model/dto"
+	"music-api/pkg/infrastucture/db"
+	"music-api/pkg/infrastucture/schema"
 
 	"net/http"
 

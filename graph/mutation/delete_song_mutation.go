@@ -1,12 +1,12 @@
 package mutation
 
 import (
-	"backend-food/graph/input"
-	"backend-food/graph/output"
-	"backend-food/internal/pkg/domain/domain_model/entity"
-	"backend-food/internal/pkg/domain/service"
-	"backend-food/pkg/share/middleware"
 	"errors"
+	"music-api/graph/input"
+	"music-api/graph/output"
+	"music-api/internal/pkg/domain/domain_model/entity"
+	"music-api/internal/pkg/domain/service"
+	"music-api/pkg/share/middleware"
 
 	"github.com/gin-gonic/gin"
 	"github.com/graphql-go/graphql"

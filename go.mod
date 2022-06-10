@@ -1,4 +1,4 @@
-module backend-food
+module music-api
 
 go 1.17
 
