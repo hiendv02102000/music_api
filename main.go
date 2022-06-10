@@ -1,7 +1,7 @@
 package main
 
 import (
-	"backend-food/internal/api/router"
+	"music-api/internal/api/router"
 )
 
 func main() {
